@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- MOBILE-FIRST VIEWPORT & SAFE AREA SETTINGS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FADADD">
+  <meta name="description" content="A special, emotional, and interactive birthday gift website for Shruddhu Ji (Shriddhi) 💗🎀">
+  <title>Happy Birthday Shruddhu Ji! 🎂💗</title>
+
+  <!-- Google Fonts: Quicksand (clean cute rounded body), Caveat (heartfelt handwriting), Outfit (modern titles) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================================================
+       4. OPENING SURPRISE SCREEN (MOBILE-FIRST WELCOME OVERLAY)
+       ======================================================== -->
+  <section id="surprise-screen" class="surprise-screen" aria-label="Birthday Welcome Surprise">
+    <!-- Floating background decorative hearts -->
+    <div class="floating-ambient-decor" aria-hidden="true">
+      <span class="bubble b1">🌸</span>
+      <span class="bubble b2">💗</span>
+      <span class="bubble b3">✨</span>
+      <span class="bubble b4">🎀</span>
+      <span class="bubble b5">🌷</span>
+      <span class="bubble b6">💕</span>
+    </div>
+
+    <div class="surprise-modal-card">
+      <div class="surprise-badge">Special Delivery 💌</div>
+      
+      <h1 class="surprise-title">Heyyy Shruddhu Jiii! 🎀</h1>
+      
+      <p class="surprise-subtitle">
+        Someone made a little surprise just for you...
+      </p>
+
+      <!-- Cute Animated 3D Pastel Gift Box -->
+      <div class="gift-box-wrapper" id="gift-box-container" aria-label="Animated Gift Box">
+        <div class="gift-box" id="gift-box">
+          <div class="gift-lid">
+            <div class="gift-bow"></div>
+            <div class="gift-ribbon-horizontal"></div>
+          </div>
+          <div class="gift-body">
+            <div class="gift-ribbon-vertical"></div>
+            <div class="gift-shine"></div>
+          </div>
+        </div>
+        <div class="sparkle-tap-hint">Tap the box or button below ✨</div>
+      </div>
+
+      <!-- Large Tap-Friendly CTA Button (>= 48px) -->
+      <button id="open-surprise-btn" class="btn-primary pulse-btn" type="button" aria-label="Open Birthday Surprise">
+        <span>Open Your Surprise 💗</span>
+      </button>
+
+      <p class="surprise-footer-note">Crafted with lots of love just for you 🌸</p>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       12. OPTIONAL MUSIC PLAYER (UNOBTRUSIVE FLOATING CONTROL)
+       ======================================================== -->
+  <!-- 🎵 HOW TO ADD MUSIC:
+       Place your favorite birthday song as 'music/birthday-song.mp3'.
+       If no file is provided, an enchanting music-box chime plays automatically via Web Audio!
+  -->
+  <div class="music-player-pill" id="music-player" aria-label="Birthday Music Player">
+    <audio id="bg-audio" preload="none">
+      <source src="music/birthday-song.mp3" type="audio/mpeg">
+      <!-- Fallback or alternative path -->
+      <source src="birthday-song.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-toggle-btn" class="music-btn" type="button" aria-label="Play or pause birthday song">
+      <span class="music-icon" id="music-icon" aria-hidden="true">🎵</span>
+      <span class="music-label" id="music-label">Play Song</span>
+      <span class="music-wave" id="music-wave" aria-hidden="true">
+        <i></i><i></i><i></i><i></i>
+      </span>
+    </button>
+  </div>
+
+  <!-- Ambient Canvas for Lightweight 60fps Confetti & Sparkles -->
+  <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- ========================================================
+       MAIN APP / WEBSITE CONTAINER (MOBILE-FIRST VERTICAL FLOW)
+       ======================================================== -->
+  <main class="mobile-app-container" id="main-content">
+
+    <!-- Top Cute Notification Banner -->
+    <header class="app-header">
+      <div class="header-pill">
+        <span class="header-dot"></span>
+        <span class="header-text">Shruddhu Ji’s Birthday Edition 🎀</span>
+        <span class="header-sparkle">✨</span>
+      </div>
+    </header>
+
+    <!-- ========================================================
+         5. BIRTHDAY HERO SECTION
+         ======================================================== -->
+    <section class="section hero-section" id="hero">
+      <div class="hero-decorative-tag">A Tiny Wish From Afar 🕊️</div>
+
+      <h1 class="hero-title">HAPPY BIRTHDAY, SHRIDDHI! 🎂</h1>
+
+      <p class="hero-subtitle">
+        To my favourite human, my Shruddhu Ji 💕
+      </p>
+
+      <div class="hero-quote-card">
+        <p class="hero-quote-text">
+          “Even though we've never met in real life, you've found a special place in my little world.”
+        </p>
+      </div>
+
+      <!-- Featured Polaroid Frame -->
+      <div class="hero-polaroid-wrap">
+        <div class="polaroid-card hero-polaroid">
+          <div class="washi-tape washi-pink" aria-hidden="true"></div>
+          <div class="polaroid-image-box">
+            <!-- 📸 Local image path: images/shriddhi-1.jpeg or 1.jpeg -->
+            <img 
+              src="images/shriddhi-1.jpeg" 
+              alt="Shriddhi (Shruddhu Ji) smiling sweetly" 
+              class="polaroid-img"
+              loading="eager"
+              onerror="this.onerror=null; this.src='1.jpeg';"
+            >
+            <div class="polaroid-sticker sticker-bow" aria-hidden="true">🎀</div>
+            <div class="polaroid-sticker sticker-heart" aria-hidden="true">💖</div>
+          </div>
+          <div class="polaroid-caption">
+            <span class="handwritten-caption">The brightest smile in the universe ✨</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Button to scroll to the Birthday Letter -->
+      <div class="hero-action-wrap">
+        <a href="#letter-section" class="btn-primary scroll-to-letter-btn" id="scroll-to-letter-btn">
+          <span>Read My Letter For You 💌</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         6. SHRIDDHI'S PHOTO GALLERY (SCRAPBOOK POLAROID GRID)
+         ======================================================== -->
+    <section class="section gallery-section" id="gallery-section">
+      <div class="section-badge">Memories & Smiles 🌸</div>
+      <h2 class="section-title">Shruddhu Ji’s Photo Gallery 📸</h2>
+      <p class="section-desc">
+        A little scrapbook of your sweetest moments. Tap any photo to take a closer look!
+      </p>
+
+      <!-- 📸 HOW TO ADD OR REPLACE PHOTOS:
+           1. Replace or add image files in the 'images/' folder (e.g. shriddhi-1.jpeg, shriddhi-2.jpeg...).
+           2. Alternatively, place images directly in the root directory (1.jpeg, 22.jpeg...).
+           3. Duplicate any .gallery-item block below to add more photos.
+           4. Change the caption inside .handwritten-caption to customize the text.
+      -->
+      <div class="scrapbook-grid" id="photo-gallery">
+
+        <!-- Photo 1 -->
+        <article class="gallery-item" data-tilt="tilt-left">
+          <div class="polaroid-card gallery-polaroid" tabindex="0" role="button" aria-label="View photo 1 in full screen" data-full="images/shriddhi-1.jpeg" data-caption="The brightest smile that lights up every day 🌸">
+            <div class="washi-tape washi-lavender" aria-hidden="true"></div>
+            <div class="polaroid-image-box">
+              <img src="images/shriddhi-1.jpeg" alt="Shriddhi - sweet memory 1" class="polaroid-img" loading="lazy" onerror="this.onerror=null; this.src='1.jpeg';">
+              <span class="tap-zoom-badge" aria-hidden="true">🔍 Tap to open</span>
+            </div>
+            <div class="polaroid-caption">
+              <span class="handwritten-caption">Radiant & effortlessly cute ✨</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Photo 2 -->
+        <article class="gallery-item" data-tilt="tilt-right">
+          <div class="polaroid-card gallery-polaroid" tabindex="0" role="button" aria-label="View photo 2 in full screen" data-full="images/shriddhi-2.jpeg" data-caption="Pure innocence & endless grace 🌷">
+            <div class="washi-tape washi-peach" aria-hidden="true"></div>
+            <div class="polaroid-image-box">
+              <img src="images/shriddhi-2.jpeg" alt="Shriddhi - sweet memory 2" class="polaroid-img" loading="lazy" onerror="this.onerror=null; this.src='22.jpeg';">
+              <span class="tap-zoom-badge" aria-hidden="true">🔍 Tap to open</span>
+            </div>
+            <div class="polaroid-caption">
+              <span class="handwritten-caption">Pure warmth and grace 🌷</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Photo 3 -->
+        <article class="gallery-item" data-tilt="tilt-left">
+          <div class="polaroid-card gallery-polaroid" tabindex="0" role="button" aria-label="View photo 3 in full screen" data-full="images/shriddhi-3.jpeg" data-caption="My favorite person in the whole online universe 💖">
+            <div class="washi-tape washi-blue" aria-hidden="true"></div>
+            <div class="polaroid-image-box">
+              <img src="images/shriddhi-3.jpeg" alt="Shriddhi - sweet memory 3" class="polaroid-img" loading="lazy" onerror="this.onerror=null; this.src='WhatsApp Image 2026-10-23 at 3.44.50 PM.jpeg';">
+              <span class="tap-zoom-badge" aria-hidden="true">🔍 Tap to open</span>
+            </div>
+            <div class="polaroid-caption">
+              <span class="handwritten-caption">Always uniquely you 🎀</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Photo 4 -->
+        <article class="gallery-item" data-tilt="tilt-right">
+          <div class="polaroid-card gallery-polaroid" tabindex="0" role="button" aria-label="View photo 4 in full screen" data-full="images/shriddhi-4.jpeg" data-caption="A heart as pure and sweet as cotton candy ☁️💗">
+            <div class="washi-tape washi-pink" aria-hidden="true"></div>
+            <div class="polaroid-image-box">
+              <img src="images/shriddhi-4.jpeg" alt="Shriddhi - sweet memory 4" class="polaroid-img" loading="lazy" onerror="this.onerror=null; this.src='WhatsApp Image 2026-10-23 at 3.44.50 PM11.jpeg';">
+              <span class="tap-zoom-badge" aria-hidden="true">🔍 Tap to open</span>
+            </div>
+            <div class="polaroid-caption">
+              <span class="handwritten-caption">Sweet like cotton candy ☁️</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Photo 5 -->
+        <article class="gallery-item" data-tilt="tilt-left">
+          <div class="polaroid-card gallery-polaroid" tabindex="0" role="button" aria-label="View photo 5 in full screen" data-full="images/shriddhi-5.jpeg" data-caption="Those quiet candid moments that make you smile ✨">
+            <div class="washi-tape washi-lavender" aria-hidden="true"></div>
+            <div class="polaroid-image-box">
+              <img src="images/shriddhi-5.jpeg" alt="Shriddhi - sweet memory 5" class="polaroid-img" loading="lazy" onerror="this.onerror=null; this.src='WhatsApp Image 2026-10-23 at 3.44.51 PM12.jpeg';">
+              <span class="tap-zoom-badge" aria-hidden="true">🔍 Tap to open</span>
+            </div>
+            <div class="polaroid-caption">
+              <span class="handwritten-caption">Effortlessly adorable 🧸</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Photo 6 -->
+        <article class="gallery-item" data-tilt="tilt-right">
+          <div class="polaroid-card gallery-polaroid" tabindex="0" role="button" aria-label="View photo 6 in full screen" data-full="images/shriddhi-6.jpeg" data-caption="Happy birthday to my lovely Shruddhu Ji! 🎂💕">
+            <div class="washi-tape washi-peach" aria-hidden="true"></div>
+            <div class="polaroid-image-box">
+              <img src="images/shriddhi-6.jpeg" alt="Shriddhi - sweet memory 6" class="polaroid-img" loading="lazy" onerror="this.onerror=null; this.src='WhatsApp Image 2026-10-23 at 3.44.51 PM33.jpeg';">
+              <span class="tap-zoom-badge" aria-hidden="true">🔍 Tap to open</span>
+            </div>
+            <div class="polaroid-caption">
+              <span class="handwritten-caption">Birthday Queen today! 👑</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- FULLSCREEN PHOTO LIGHTBOX -->
+    <div id="photo-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo full-size preview" hidden>
+      <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+      <div class="lightbox-content-card">
+        <button id="lightbox-close-btn" class="lightbox-close-btn" type="button" aria-label="Close photo preview">
+          <span>✕ Close 💗</span>
+        </button>
+        <div class="lightbox-img-container">
+          <img id="lightbox-img" src="" alt="Shriddhi full view">
+        </div>
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         7. BIRTHDAY LETTER SECTION
+         ======================================================== -->
+    <section class="section letter-section" id="letter-section">
+      <div class="section-badge">From My Heart To Yours 💌</div>
+      
+      <div class="letter-envelope-wrap">
+        <div class="letter-card">
+          <!-- Scrapbook Header Tape -->
+          <div class="washi-tape washi-pink letter-tape" aria-hidden="true"></div>
+          
+          <div class="letter-postmark" aria-hidden="true">
+            <span>Special Delivery</span>
+            <small>Bestie Mail 💌</small>
+          </div>
+
+          <h2 class="letter-heading">Dearest Shruddhu Ji, 💗</h2>
+
+          <!-- Letter Text Content with Typewriter Effect Container -->
+          <div class="letter-body" id="letter-body">
+            <!-- Full letter paragraphs -->
+            <p class="letter-paragraph">Happy Birthday, my dearest Shruddhu Jiii! 💗🎂</p>
+            
+            <p class="letter-paragraph">I don't even know how to put into words how special you are to me.</p>
+            
+            <p class="letter-paragraph">It's amazing how we haven't met in real life or even called each other, yet our little online friendship means so much to me. We met through chats, shared little conversations, and I've even heard your voice through your voice notes.</p>
+            
+            <p class="letter-paragraph">Maybe we haven't made memories sitting beside each other, but we've made our own little memories through messages, random conversations, laughs, and those tiny moments that make a difference.</p>
+            
+            <p class="letter-paragraph">I'm genuinely glad our paths crossed. I hope this new year of your life brings you endless smiles, peace, happiness, beautiful surprises, and all the things your heart wishes for.</p>
+            
+            <p class="letter-paragraph">And maybe someday, we'll finally meet in real life and turn this online friendship into an actual memory.</p>
+            
+            <p class="letter-paragraph">Until then, here's a little corner of the internet made especially for you.</p>
+            
+            <p class="letter-paragraph">Happy Birthday, Shruddhu Ji. Keep smiling, keep being yourself, and never forget that I'm really happy to have you in my life. 🥹💗</p>
+            
+            <p class="letter-paragraph letter-sign-off">With lots of love,<br><span class="signature-highlight">Your best friend 💌</span></p>
+          </div>
+
+          <!-- Letter Controls (Replay & Instant Reveal for smooth mobile experience) -->
+          <div class="letter-controls">
+            <button id="skip-letter-btn" class="btn-secondary" type="button" aria-label="Skip typewriter and read full letter">
+              <span>Read All Instantly 📖</span>
+            </button>
+            <button id="replay-letter-btn" class="btn-secondary" type="button" aria-label="Replay typewriter letter effect">
+              <span>Replay Letter ↺</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         8. THINGS I LOVE ABOUT OUR FRIENDSHIP
+         ======================================================== -->
+    <section class="section reasons-section" id="friendship-reasons">
+      <div class="section-badge">Pure Appreciation 🌷</div>
+      <h2 class="section-title">Things I Love About Our Friendship 💕</h2>
+      <p class="section-desc">
+        Six little things that make having you in my life so precious.
+      </p>
+
+      <div class="reasons-stack">
+
+        <!-- Card 1 -->
+        <div class="reason-card card-pink">
+          <div class="reason-icon-bubble">🌷</div>
+          <div class="reason-text-box">
+            <h3 class="reason-title">Your adorable existence</h3>
+            <p class="reason-description">
+              Just you simply being yourself brings an instant gentleness and pure positivity to everything around you.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="reason-card card-lavender">
+          <div class="reason-icon-bubble">💌</div>
+          <div class="reason-text-box">
+            <h3 class="reason-title">Your messages</h3>
+            <p class="reason-description">
+              Seeing your name pop up on my screen always turns an ordinary day into something brighter and happier.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="reason-card card-blue">
+          <div class="reason-icon-bubble">🎧</div>
+          <div class="reason-text-box">
+            <h3 class="reason-title">Your voice notes</h3>
+            <p class="reason-description">
+              Hearing your voice, your giggles, and your stories gives our friendship such a real, warm, and sweet connection.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="reason-card card-peach">
+          <div class="reason-icon-bubble">✨</div>
+          <div class="reason-text-box">
+            <h3 class="reason-title">Our random conversations</h3>
+            <p class="reason-description">
+              Whether we talk about silly random things or real thoughts, every single message feels effortless and natural.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="reason-card card-cream">
+          <div class="reason-icon-bubble">🧸</div>
+          <div class="reason-text-box">
+            <h3 class="reason-title">The comfort of talking to you</h3>
+            <p class="reason-description">
+              A peaceful place of understanding where distance doesn't matter and kindness always comes first.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="reason-card card-rose">
+          <div class="reason-icon-bubble">🌍</div>
+          <div class="reason-text-box">
+            <h3 class="reason-title">The hope of meeting someday</h3>
+            <p class="reason-description">
+              The sweet thought that one day we will laugh in person, order good food, and make our favorite memories real!
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         9. OUR FRIENDSHIP TIMELINE
+         ======================================================== -->
+    <section class="section timeline-section" id="timeline-section">
+      <div class="section-badge">Our Story 🧭</div>
+      <h2 class="section-title">Our Friendship Timeline 🎀</h2>
+      <p class="section-desc">
+        From a simple chat window to an irreplaceable friendship.
+      </p>
+
+      <div class="vertical-timeline">
+
+        <!-- Timeline item 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot-wrap">
+            <div class="timeline-icon-dot">🌐</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content-card">
+            <span class="timeline-date-tag">[A Special Day Online]</span>
+            <h3 class="timeline-title">How Our Paths Crossed Online</h3>
+            <p class="timeline-text">
+              In a world of billions of people and countless screens, we somehow stumbled into the same chat and said our first hello.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline item 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot-wrap">
+            <div class="timeline-icon-dot">💬</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content-card">
+            <span class="timeline-date-tag">[The Texting Chapter]</span>
+            <h3 class="timeline-title">Our Chats and Conversations</h3>
+            <p class="timeline-text">
+              Little daily texts that slowly grew into comfortable conversations, shared laughs, and becoming each other’s favorite chat.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline item 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot-wrap">
+            <div class="timeline-icon-dot">🎙️</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content-card">
+            <span class="timeline-date-tag">[Voice Notes Era]</span>
+            <h3 class="timeline-title">Hearing Your Voice Through Voice Notes</h3>
+            <p class="timeline-text">
+              The moment you sent voice notes, bringing your real warmth, your tone, and sweet laughter straight to my ears.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline item 4 -->
+        <div class="timeline-item">
+          <div class="timeline-dot-wrap">
+            <div class="timeline-icon-dot">🌸</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content-card">
+            <span class="timeline-date-tag">[Tiny Moments]</span>
+            <h3 class="timeline-title">The Little Moments That Made It Special</h3>
+            <p class="timeline-text">
+              Random check-ins, funny jokes, cheering each other on, and building a friendship that feels so genuine and safe.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline item 5 -->
+        <div class="timeline-item">
+          <div class="timeline-dot-wrap">
+            <div class="timeline-icon-dot">🎂</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content-card active-step">
+            <span class="timeline-date-tag highlight-tag">[Today • Your Birthday!]</span>
+            <h3 class="timeline-title">Celebrating Your Birthday With This Website</h3>
+            <p class="timeline-text">
+              A little corner of the internet built with love to celebrate you, make you smile, and show you how valued you are!
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline item 6 -->
+        <div class="timeline-item">
+          <div class="timeline-dot-wrap">
+            <div class="timeline-icon-dot">✈️</div>
+          </div>
+          <div class="timeline-content-card future-step">
+            <span class="timeline-date-tag">[Our Future Chapter]</span>
+            <h3 class="timeline-title">Hopefully Meeting In Real Life Someday</h3>
+            <p class="timeline-text">
+              Turning our online world into an actual real-life memory, sharing a big hug, and celebrating our friendship in person!
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         10. INTERACTIVE BIRTHDAY CAKE SECTION
+         ======================================================== -->
+    <section class="section cake-section" id="cake-section">
+      <div class="section-badge">Make A Wish 🕯️</div>
+      <h2 class="section-title">Blow Out The Candles! 🎂</h2>
+      <p class="section-desc">
+        Close your eyes, think of the sweetest wish in your heart, and tap below!
+      </p>
+
+      <div class="cake-display-card">
+        <!-- SVG Interactive Birthday Cake -->
+        <div class="cake-svg-wrapper" id="cake-wrapper" aria-label="Birthday Cake with Candles">
+          <svg viewBox="0 0 300 260" class="birthday-cake-svg" id="birthday-cake-svg" role="img" aria-label="Pastel Birthday Cake">
+            <!-- Plate -->
+            <ellipse cx="150" cy="240" rx="135" ry="16" fill="#F0E2D6" />
+            <ellipse cx="150" cy="237" rx="125" ry="13" fill="#FFFFFF" />
+
+            <!-- Cake Tier 1 (Bottom) -->
+            <path d="M 45 170 Q 150 185 255 170 L 255 225 Q 150 245 45 225 Z" fill="#FADADD" />
+            <!-- Frosting Cream Border Bottom -->
+            <path d="M 45 170 Q 75 185 105 170 Q 135 185 165 170 Q 195 185 225 170 Q 240 180 255 170" fill="none" stroke="#FFF8F0" stroke-width="8" stroke-linecap="round" />
+            
+            <!-- Tier 2 (Top) -->
+            <path d="M 75 110 Q 150 125 225 110 L 225 170 Q 150 185 75 170 Z" fill="#E8DFFF" />
+            <!-- Top Frosting Drips -->
+            <path d="M 75 110 Q 100 130 120 115 Q 150 135 180 115 Q 205 130 225 110 Q 150 95 75 110" fill="#FFF8F0" />
+            
+            <!-- Decorative Strawberries / Cherries -->
+            <circle cx="100" cy="108" r="7" fill="#FF758F" />
+            <circle cx="150" cy="112" r="7" fill="#FF758F" />
+            <circle cx="200" cy="108" r="7" fill="#FF758F" />
+
+            <!-- Candles (3 Cute Pastel Candles) -->
+            <!-- Candle 1 (Left) -->
+            <rect x="105" y="65" width="10" height="40" rx="3" fill="#DFF1FF" />
+            <line x1="110" y1="65" x2="110" y2="55" stroke="#777" stroke-width="2" />
+            <!-- Candle 1 Flame -->
+            <g class="candle-flame flame-1" id="flame-1">
+              <ellipse cx="110" cy="46" rx="6" ry="11" fill="#FFD166" />
+              <ellipse cx="110" cy="48" rx="3.5" ry="7" fill="#FF758F" />
+            </g>
+
+            <!-- Candle 2 (Center) -->
+            <rect x="145" y="55" width="10" height="50" rx="3" fill="#FFE5D0" />
+            <line x1="150" y1="55" x2="150" y2="45" stroke="#777" stroke-width="2" />
+            <!-- Candle 2 Flame -->
+            <g class="candle-flame flame-2" id="flame-2">
+              <ellipse cx="150" cy="36" rx="7" ry="13" fill="#FFD166" />
+              <ellipse cx="150" cy="38" rx="4" ry="8" fill="#FF758F" />
+            </g>
+
+            <!-- Candle 3 (Right) -->
+            <rect x="185" y="65" width="10" height="40" rx="3" fill="#FADADD" />
+            <line x1="190" y1="65" x2="190" y2="55" stroke="#777" stroke-width="2" />
+            <!-- Candle 3 Flame -->
+            <g class="candle-flame flame-3" id="flame-3">
+              <ellipse cx="190" cy="46" rx="6" ry="11" fill="#FFD166" />
+              <ellipse cx="190" cy="48" rx="3.5" ry="7" fill="#FF758F" />
+            </g>
+
+            <!-- Smoke puffs (shown when blown out) -->
+            <g class="smoke-puffs" id="smoke-puffs" opacity="0">
+              <circle cx="110" cy="40" r="5" fill="#D8D0DA" />
+              <circle cx="150" cy="30" r="6" fill="#D8D0DA" />
+              <circle cx="190" cy="40" r="5" fill="#D8D0DA" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- Wish Success Announcement -->
+        <div class="wish-reveal-box" id="wish-reveal-box" aria-live="polite">
+          <div class="sparkle-stars" aria-hidden="true">✨ 🌟 💖 🌟 ✨</div>
+          <p class="wish-message">
+            “Your wish deserves all the magic in the world, Shruddhu Ji! 💖”
+          </p>
+        </div>
+
+        <!-- Blow Out Candle Button (>= 48px) -->
+        <div class="cake-actions">
+          <button id="blow-candle-btn" class="btn-primary" type="button" aria-label="Make a birthday wish and blow candles">
+            <span>Make a Birthday Wish! 🕯️</span>
+          </button>
+          <button id="relight-candle-btn" class="btn-secondary" type="button" aria-label="Relight the cake candles" style="display: none;">
+            <span>Light Candles Again 🕯️✨</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         11. RANDOM BIRTHDAY WISHES GENERATOR
+         ======================================================== -->
+    <section class="section wishes-section" id="wishes-section">
+      <div class="section-badge">Sweet Blessings 🌸</div>
+      <h2 class="section-title">A Little Box Of Wishes ✨</h2>
+      <p class="section-desc">
+        Tap the button to reveal sweet blessings chosen specially for you!
+      </p>
+
+      <div class="wish-generator-card">
+        <div class="wish-cookie-icon" id="wish-envelope-icon" aria-hidden="true">💌</div>
+
+        <div class="wish-display-container">
+          <blockquote class="wish-active-text" id="wish-quote" aria-live="polite">
+            “May your smile always have a reason to shine. 🌟”
+          </blockquote>
+        </div>
+
+        <div class="wish-counter-pill" id="wish-counter">
+          Wish 1 of 8 💖
+        </div>
+
+        <button id="next-wish-btn" class="btn-primary pulse-soft" type="button" aria-label="Reveal another birthday wish">
+          <span>Pick Another Sweet Wish 🌸</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         13. FINAL SURPRISE & ONE LAST HUG
+         ======================================================== -->
+    <section class="section final-section" id="final-section">
+      <div class="final-card">
+        <!-- Floating hearts in the card -->
+        <div class="final-ambient-hearts" aria-hidden="true">
+          <span>💖</span><span>💗</span><span>💕</span>
+        </div>
+
+        <h2 class="final-greeting-title">One last thing, Shruddhu Ji... 💗</h2>
+
+        <p class="final-message-para">
+          “Distance may mean we haven't met yet, but it doesn't make this birthday wish any less real. I hope this little website makes you smile today.”
+        </p>
+
+        <div class="final-highlight-banner">
+          <h3 class="final-big-shoutout">Happy Birthday, My Shruddhu Ji! 🎂💗</h3>
+        </div>
+
+        <!-- Large Tap-Friendly Hug Button (>= 48px) -->
+        <button id="send-hug-btn" class="btn-primary hug-btn" type="button" aria-label="Send a virtual hug">
+          <span>Send You One Last Hug 🤗</span>
+        </button>
+
+        <!-- Hug Result Message Modal / Box -->
+        <div class="hug-reveal-box" id="hug-reveal-box" aria-live="polite">
+          <div class="hug-emojis" aria-hidden="true">🫂 💕 🧸 💕 🫂</div>
+          <p class="hug-text">
+            “Consider yourself hugged, bestie. Until the day we finally meet! 🫂💕”
+          </p>
+        </div>
+
+        <!-- Little cute warm footer inside the final card -->
+        <footer class="final-footer">
+          <div class="footer-divider" aria-hidden="true">🎀 • 🌸 • 🎀</div>
+          <p class="footer-signature">
+            Made with love, especially for Shriddhi ✨
+          </p>
+          <button id="back-to-top-btn" class="back-to-top" type="button" aria-label="Scroll back to top">
+            <span>↑ Back to Top 🎀</span>
+          </button>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sweet Virtual Hug Fullscreen Shower Overlay -->
+  <div id="hug-overlay" class="hug-overlay" aria-hidden="true" hidden>
+    <div class="hug-overlay-content">
+      <div class="hug-big-icon">🫂</div>
+      <p class="hug-overlay-title">Warmest Birthday Hug Delivered! 💕</p>
+      <p class="hug-overlay-subtitle">“Consider yourself hugged, bestie. Until the day we finally meet! 🫂💕”</p>
+      <button id="hug-overlay-close" class="btn-secondary" type="button">Awww, thank you! 🥹💗</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

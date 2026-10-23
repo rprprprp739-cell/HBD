@@ -1,0 +1,1463 @@
+/* ==========================================================================
+   SHRIDDHI (SHRUDDHU JI) BIRTHDAY EXPERIENCE - STYLE.CSS
+   MOBILE-FIRST (320px - 480px) DREAMY PASTEL SCRAPBOOK DESIGN
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS VARIABLES & DESIGN TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+  /* Pastel Color Palette */
+  --baby-pink: #FADADD;
+  --cream: #FFF8F0;
+  --lavender: #E8DFFF;
+  --baby-blue: #DFF1FF;
+  --peach: #FFE5D0;
+  --white: #FFFFFF;
+
+  /* Rich Contrast & Accent Colors */
+  --rose-accent: #E2587E;
+  --rose-deep: #C73E66;
+  --rose-soft: #F4BAC9;
+  --text-primary: #382932;    /* High contrast, warm deep plum */
+  --text-secondary: #68525E;  /* Readable muted contrast */
+  --text-muted: #8F7684;
+  
+  /* Shadows & Glassmorphism */
+  --shadow-soft: 0 8px 24px rgba(225, 165, 185, 0.22);
+  --shadow-card: 0 12px 30px rgba(215, 150, 175, 0.25);
+  --shadow-polaroid: 0 10px 25px rgba(180, 140, 160, 0.2);
+  --shadow-pop: 0 14px 34px rgba(226, 88, 126, 0.3);
+
+  /* Borders & Radii */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --border-delicate: 1.5px solid rgba(240, 200, 215, 0.6);
+
+  /* Typography */
+  --font-main: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-handwriting: 'Caveat', cursive, sans-serif;
+
+  /* Mobile Spacing & Layout */
+  --touch-target: 48px;
+  --container-max: 480px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL RESET & MOBILE DEFAULTS
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  height: 100%;
+  background-color: #F8EDEB;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-primary);
+  background: linear-gradient(180deg, #FFF9F5 0%, #FFF0F4 35%, #F4F0FF 70%, #FFF5ED 100%);
+  background-attachment: fixed;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100svh;
+  min-height: 100dvh;
+  position: relative;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------------------------------------------
+   3. MOBILE APP WRAPPER & DESKTOP ENHANCEMENT
+   -------------------------------------------------------------------------- */
+.mobile-app-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  min-height: 100svh;
+  padding: calc(16px + var(--safe-top)) 16px calc(48px + var(--safe-bottom)) 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+  z-index: 10;
+}
+
+/* On desktop, showcase inside a cozy, centered mobile canvas */
+@media (min-width: 600px) {
+  body {
+    background: radial-gradient(circle at 50% 20%, #FFE9F0 0%, #EFE8FA 50%, #E6EEF8 100%);
+    padding: 30px 16px;
+  }
+  .mobile-app-container {
+    background: linear-gradient(180deg, #FFFDFB 0%, #FFF3F6 40%, #F7F3FF 75%, #FFF8F2 100%);
+    border-radius: 40px;
+    box-shadow: 0 20px 60px rgba(180, 130, 160, 0.25), 0 0 0 10px rgba(255, 255, 255, 0.7);
+    margin: 20px auto;
+    padding: 24px 20px 48px 20px;
+  }
+}
+
+/* Canvas confetti overlay */
+.confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* --------------------------------------------------------------------------
+   4. BUTTONS & INTERACTIVE ELEMENTS (MOBILE-FIRST >= 48px)
+   -------------------------------------------------------------------------- */
+button, a.btn-primary, a.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-target);
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-main);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.2s ease;
+  user-select: none;
+  text-align: center;
+  box-sizing: border-box;
+  touch-action: manipulation;
+}
+
+button:active, a.btn-primary:active, a.btn-secondary:active {
+  transform: scale(0.96);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #FF7597 0%, #E2587E 50%, #C73E66 100%);
+  color: var(--white);
+  box-shadow: 0 8px 20px rgba(226, 88, 126, 0.35);
+  width: 100%;
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--rose-accent);
+  border: 1.5px solid var(--baby-pink);
+  box-shadow: 0 4px 12px rgba(226, 88, 126, 0.12);
+}
+
+.pulse-btn {
+  animation: gentlePulse 2.4s infinite ease-in-out;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    box-shadow: 0 8px 20px rgba(226, 88, 126, 0.35);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 12px 30px rgba(226, 88, 126, 0.55);
+    transform: scale(1.025);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. OPENING SURPRISE SCREEN (WELCOME OVERLAY)
+   -------------------------------------------------------------------------- */
+.surprise-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: linear-gradient(145deg, #FFF0F4 0%, #F5ECFF 50%, #FFEEDD 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(20px + var(--safe-top)) 20px calc(24px + var(--safe-bottom)) 20px;
+  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.7s;
+}
+
+.surprise-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(1.04);
+}
+
+.surprise-modal-card {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: var(--radius-lg);
+  padding: 30px 22px;
+  box-shadow: var(--shadow-card), 0 0 0 1px rgba(255, 255, 255, 0.8);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border: 2px dashed #FADADD;
+}
+
+.surprise-badge {
+  background: #FFF0F5;
+  color: var(--rose-accent);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  border: 1px solid #FFD8E4;
+}
+
+.surprise-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.85rem, 7vw, 2.3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.surprise-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+/* 3D Animated Gift Box */
+.gift-box-wrapper {
+  margin: 10px 0 26px 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gift-box {
+  width: 110px;
+  height: 105px;
+  position: relative;
+  transition: transform 0.3s ease;
+  animation: giftWiggle 3.2s infinite ease-in-out;
+}
+
+.gift-box:hover, .gift-box:active {
+  transform: scale(1.06);
+}
+
+.gift-lid {
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 120px;
+  height: 28px;
+  background: linear-gradient(135deg, #FF94B2, #E2587E);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(226, 88, 126, 0.3);
+  z-index: 2;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gift-box.opened .gift-lid {
+  transform: translateY(-55px) rotate(-24deg);
+  opacity: 0.9;
+}
+
+.gift-bow {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 24px;
+}
+
+.gift-bow::before, .gift-bow::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 22px;
+  border: 4px solid #FFE5D0;
+  border-radius: 50% 50% 0 50%;
+  top: 0;
+}
+.gift-bow::before {
+  left: 3px;
+  transform: rotate(-30deg);
+}
+.gift-bow::after {
+  right: 3px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(30deg);
+}
+
+.gift-ribbon-horizontal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 100%;
+  background: #FFE5D0;
+}
+
+.gift-body {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 110px;
+  height: 80px;
+  background: linear-gradient(135deg, #FADADD 0%, #F5B9CB 100%);
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 10px 24px rgba(225, 150, 175, 0.35);
+  overflow: hidden;
+}
+
+.gift-ribbon-vertical {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 100%;
+  background: #FFE5D0;
+}
+
+.sparkle-tap-hint {
+  font-family: var(--font-handwriting);
+  font-size: 1.25rem;
+  color: var(--rose-accent);
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+@keyframes giftWiggle {
+  0%, 75%, 100% { transform: rotate(0deg); }
+  80% { transform: rotate(-5deg) scale(1.02); }
+  85% { transform: rotate(5deg) scale(1.02); }
+  90% { transform: rotate(-3deg); }
+  95% { transform: rotate(3deg); }
+}
+
+.surprise-footer-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 16px;
+}
+
+/* Floating ambient elements in background */
+.floating-ambient-decor .bubble {
+  position: absolute;
+  pointer-events: none;
+  font-size: 1.6rem;
+  animation: floatDrift 6s infinite ease-in-out;
+  opacity: 0.7;
+}
+
+.b1 { top: 8%; left: 10%; animation-delay: 0s; }
+.b2 { top: 15%; right: 12%; animation-delay: 1.5s; }
+.b3 { bottom: 25%; left: 8%; animation-delay: 2.5s; }
+.b4 { bottom: 12%; right: 10%; animation-delay: 0.8s; }
+.b5 { top: 45%; left: 5%; animation-delay: 3.2s; font-size: 1.2rem; }
+.b6 { top: 50%; right: 6%; animation-delay: 2.1s; font-size: 1.3rem; }
+
+@keyframes floatDrift {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(8deg); }
+}
+
+/* --------------------------------------------------------------------------
+   6. HEADER & COMPACT NOTIFICATION PILL
+   -------------------------------------------------------------------------- */
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 14px rgba(220, 160, 180, 0.18);
+  border: 1px solid rgba(250, 218, 221, 0.7);
+}
+
+.header-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--rose-accent);
+  box-shadow: 0 0 8px var(--rose-accent);
+  animation: dotBlink 1.8s infinite;
+}
+
+.header-text {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+@keyframes dotBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* --------------------------------------------------------------------------
+   7. FLOATING MUSIC PLAYER (ACCESSIBLE & MOBILE-UNOBTRUSIVE)
+   -------------------------------------------------------------------------- */
+.music-player-pill {
+  position: fixed;
+  bottom: calc(16px + var(--safe-bottom));
+  right: 16px;
+  z-index: 999;
+}
+
+.music-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid var(--baby-pink);
+  box-shadow: 0 8px 24px rgba(220, 140, 170, 0.28);
+  border-radius: var(--radius-pill);
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--rose-accent);
+  min-height: 44px;
+}
+
+.music-btn:hover, .music-btn:active {
+  background: #FFF5F8;
+}
+
+.music-wave {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+}
+
+.music-wave i {
+  width: 3px;
+  height: 4px;
+  background: var(--rose-accent);
+  border-radius: 2px;
+  display: block;
+}
+
+.music-btn.playing .music-wave i:nth-child(1) { animation: soundWave 0.8s infinite ease alternate; }
+.music-btn.playing .music-wave i:nth-child(2) { animation: soundWave 0.6s infinite 0.2s ease alternate; }
+.music-btn.playing .music-wave i:nth-child(3) { animation: soundWave 0.9s infinite 0.1s ease alternate; }
+.music-btn.playing .music-wave i:nth-child(4) { animation: soundWave 0.7s infinite 0.3s ease alternate; }
+
+@keyframes soundWave {
+  0% { height: 4px; }
+  100% { height: 14px; }
+}
+
+/* --------------------------------------------------------------------------
+   8. COMMON SECTION STYLES & BADGES
+   -------------------------------------------------------------------------- */
+.section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.section-badge {
+  align-self: center;
+  background: #FFF2F6;
+  color: var(--rose-accent);
+  border: 1px solid #FFD6E3;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 5.5vw, 1.95rem);
+  font-weight: 800;
+  text-align: center;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.section-desc {
+  text-align: center;
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  padding: 0 8px;
+}
+
+/* --------------------------------------------------------------------------
+   9. BIRTHDAY HERO SECTION
+   -------------------------------------------------------------------------- */
+.hero-section {
+  text-align: center;
+  padding-top: 8px;
+}
+
+.hero-decorative-tag {
+  display: inline-block;
+  font-family: var(--font-handwriting);
+  font-size: 1.25rem;
+  color: var(--rose-accent);
+  margin-bottom: 6px;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 7.5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--rose-accent);
+  margin-bottom: 14px;
+}
+
+.hero-quote-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  border: 1.5px dashed var(--baby-pink);
+  margin: 0 auto 24px auto;
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-quote-text {
+  font-size: 0.98rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Featured Hero Polaroid */
+.hero-polaroid-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.hero-polaroid {
+  width: 100%;
+  max-width: 320px;
+  transform: rotate(-1.5deg);
+  transition: transform 0.3s ease;
+}
+
+.hero-polaroid:hover, .hero-polaroid:active {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.hero-action-wrap {
+  margin-top: 4px;
+}
+
+.scroll-to-letter-btn {
+  box-shadow: 0 10px 24px rgba(226, 88, 126, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   10. POLAROID CARDS & SCRAPBOOK STYLING
+   -------------------------------------------------------------------------- */
+.polaroid-card {
+  background: var(--white);
+  padding: 10px 10px 16px 10px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-polaroid);
+  position: relative;
+  border: 1px solid rgba(230, 210, 220, 0.4);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.polaroid-image-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #F8F0F3;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.polaroid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.polaroid-caption {
+  text-align: center;
+  padding-top: 10px;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.handwritten-caption {
+  font-family: var(--font-handwriting);
+  font-size: 1.35rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Washi Tape Strips */
+.washi-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85px;
+  height: 24px;
+  z-index: 5;
+  opacity: 0.88;
+  clip-path: polygon(0% 0%, 100% 0%, 97% 100%, 3% 100%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.washi-pink { background: linear-gradient(135deg, rgba(250, 218, 221, 0.95), rgba(255, 185, 205, 0.9)); }
+.washi-lavender { background: linear-gradient(135deg, rgba(232, 223, 255, 0.95), rgba(208, 195, 255, 0.9)); }
+.washi-peach { background: linear-gradient(135deg, rgba(255, 229, 208, 0.95), rgba(255, 205, 175, 0.9)); }
+.washi-blue { background: linear-gradient(135deg, rgba(223, 241, 255, 0.95), rgba(188, 222, 255, 0.9)); }
+
+/* Polaroid Stickers */
+.polaroid-sticker {
+  position: absolute;
+  font-size: 1.4rem;
+  z-index: 4;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+.sticker-bow { top: 6px; right: 8px; }
+.sticker-heart { bottom: 6px; left: 8px; }
+
+/* --------------------------------------------------------------------------
+   11. SHRIDDHI'S PHOTO GALLERY (RESPONSIVE GRID)
+   -------------------------------------------------------------------------- */
+.scrapbook-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+/* On very narrow phones (under 350px), fall back to single column */
+@media (max-width: 350px) {
+  .scrapbook-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.gallery-item {
+  position: relative;
+}
+
+.gallery-polaroid {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.gallery-polaroid:active {
+  transform: scale(0.97) !important;
+}
+
+.gallery-item[data-tilt="tilt-left"] .gallery-polaroid {
+  transform: rotate(-1.5deg);
+}
+.gallery-item[data-tilt="tilt-right"] .gallery-polaroid {
+  transform: rotate(1.8deg);
+}
+
+.tap-zoom-badge {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #FFF;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   12. FULLSCREEN PHOTO LIGHTBOX
+   -------------------------------------------------------------------------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(16px + var(--safe-top)) 16px calc(24px + var(--safe-bottom)) 16px;
+}
+
+.lightbox[hidden] {
+  display: none !important;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 20, 28, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: fadeIn 0.25s ease forwards;
+}
+
+.lightbox-content-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  animation: scalePop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.lightbox-close-btn {
+  align-self: flex-end;
+  background: #FFF0F4;
+  color: var(--rose-accent);
+  border: 1px solid var(--baby-pink);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  min-height: 44px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 10px;
+}
+
+.lightbox-img-container {
+  width: 100%;
+  max-height: 60svh;
+  background: #FDF7FA;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img-container img {
+  width: 100%;
+  height: 100%;
+  max-height: 60svh;
+  object-fit: contain;
+  display: block;
+}
+
+.lightbox-caption {
+  font-family: var(--font-handwriting);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-top: 12px;
+  line-height: 1.3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scalePop {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* --------------------------------------------------------------------------
+   13. BIRTHDAY LETTER SECTION
+   -------------------------------------------------------------------------- */
+.letter-section {
+  margin-top: 10px;
+}
+
+.letter-envelope-wrap {
+  width: 100%;
+}
+
+.letter-card {
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  padding: 34px 22px 26px 22px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  border: 1px solid #F3DFD2;
+  /* Subtle lined paper texture effect */
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    rgba(235, 205, 215, 0.28) 31px,
+    rgba(235, 205, 215, 0.28) 32px
+  );
+}
+
+.letter-tape {
+  top: -12px;
+  width: 110px;
+}
+
+.letter-postmark {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1.5px dashed var(--rose-accent);
+  border-radius: 8px;
+  padding: 4px 8px;
+  opacity: 0.65;
+  transform: rotate(8deg);
+  pointer-events: none;
+}
+.letter-postmark span {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--rose-accent);
+  text-transform: uppercase;
+}
+.letter-postmark small {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+}
+
+.letter-heading {
+  font-family: var(--font-handwriting);
+  font-size: clamp(2rem, 7vw, 2.4rem);
+  font-weight: 700;
+  color: var(--rose-accent);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.letter-body {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.letter-paragraph {
+  transition: opacity 0.3s ease;
+}
+
+.letter-sign-off {
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.signature-highlight {
+  font-family: var(--font-handwriting);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--rose-accent);
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* Typewriter typing cursor */
+.typing-cursor::after {
+  content: ' |';
+  color: var(--rose-accent);
+  font-weight: 900;
+  animation: cursorBlink 0.8s infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.letter-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(220, 180, 195, 0.4);
+}
+
+.letter-controls button {
+  flex: 1;
+  font-size: 0.92rem;
+  padding: 10px 14px;
+}
+
+/* --------------------------------------------------------------------------
+   14. THINGS I LOVE ABOUT OUR FRIENDSHIP (6 PASTEL STACKED CARDS)
+   -------------------------------------------------------------------------- */
+.reasons-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.reason-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  border: var(--border-delicate);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reason-card:active {
+  transform: scale(0.98);
+}
+
+.card-pink { background: linear-gradient(135deg, #FFF0F3 0%, var(--baby-pink) 100%); }
+.card-lavender { background: linear-gradient(135deg, #F8F5FF 0%, var(--lavender) 100%); }
+.card-blue { background: linear-gradient(135deg, #F2F8FF 0%, var(--baby-blue) 100%); }
+.card-peach { background: linear-gradient(135deg, #FFF5ED 0%, var(--peach) 100%); }
+.card-cream { background: linear-gradient(135deg, #FFFFFF 0%, var(--cream) 100%); }
+.card-rose { background: linear-gradient(135deg, #FFF0F5 0%, #FFDFE8 100%); }
+
+.reason-icon-bubble {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.reason-text-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reason-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.reason-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* --------------------------------------------------------------------------
+   15. OUR FRIENDSHIP TIMELINE (VERTICAL PASTEL)
+   -------------------------------------------------------------------------- */
+.vertical-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  width: 100%;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 14px;
+  position: relative;
+}
+
+.timeline-dot-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  min-width: 40px;
+}
+
+.timeline-icon-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--rose-accent);
+  box-shadow: 0 4px 12px rgba(226, 88, 126, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  z-index: 2;
+}
+
+.timeline-line {
+  width: 3px;
+  flex: 1;
+  background: linear-gradient(180deg, var(--rose-accent) 0%, var(--baby-pink) 100%);
+  margin: 4px 0;
+  border-radius: 2px;
+}
+
+.timeline-content-card {
+  flex: 1;
+  background: var(--white);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(240, 210, 225, 0.5);
+  margin-bottom: 4px;
+}
+
+.timeline-date-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--rose-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.timeline-date-tag.highlight-tag {
+  background: #FFF0F4;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--baby-pink);
+}
+
+.timeline-title {
+  font-family: var(--font-heading);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.timeline-text {
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.timeline-content-card.active-step {
+  border: 2px solid var(--rose-accent);
+  background: #FFF8FA;
+}
+
+.timeline-content-card.future-step {
+  border-style: dashed;
+  background: #FAF8FF;
+}
+
+/* --------------------------------------------------------------------------
+   16. INTERACTIVE BIRTHDAY CAKE SECTION
+   -------------------------------------------------------------------------- */
+.cake-display-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 24px 18px;
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1.5px solid rgba(245, 215, 225, 0.6);
+}
+
+.cake-svg-wrapper {
+  width: 100%;
+  max-width: 270px;
+  margin: 10px 0;
+}
+
+.birthday-cake-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Candle flame animations */
+.candle-flame {
+  transform-origin: center bottom;
+  animation: flickerFlame 1.8s infinite alternate ease-in-out;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.flame-1 { animation-delay: 0.1s; }
+.flame-2 { animation-delay: 0.35s; }
+.flame-3 { animation-delay: 0.2s; }
+
+@keyframes flickerFlame {
+  0% { transform: scale(1) rotate(-2deg); }
+  25% { transform: scale(1.08, 0.95) rotate(2deg); }
+  50% { transform: scale(0.95, 1.05) rotate(-3deg); }
+  75% { transform: scale(1.05, 0.98) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* When candles are blown out */
+.candle-flame.blown-out {
+  opacity: 0;
+  transform: translateY(-10px) scale(0.2);
+}
+
+.smoke-puffs.rising {
+  animation: smokeRise 1.4s forwards ease-out;
+}
+
+@keyframes smokeRise {
+  0% { opacity: 0; transform: translateY(0) scale(0.5); }
+  40% { opacity: 0.75; transform: translateY(-12px) scale(1.2); }
+  100% { opacity: 0; transform: translateY(-28px) scale(1.8); }
+}
+
+.wish-reveal-box {
+  display: none;
+  background: linear-gradient(135deg, #FFF0F5, #FFF9F2);
+  border: 1.5px dashed var(--rose-accent);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin: 16px 0;
+  animation: scalePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.wish-reveal-box.show {
+  display: block;
+}
+
+.sparkle-stars {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.wish-message {
+  font-family: var(--font-handwriting);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--rose-deep);
+  line-height: 1.35;
+}
+
+.cake-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   17. RANDOM BIRTHDAY WISHES GENERATOR
+   -------------------------------------------------------------------------- */
+.wish-generator-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 28px 20px;
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: var(--border-delicate);
+}
+
+.wish-cookie-icon {
+  font-size: 2.8rem;
+  margin-bottom: 8px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.wish-cookie-icon.pop {
+  transform: scale(1.25) rotate(-10deg);
+}
+
+.wish-display-container {
+  min-height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0 16px 0;
+  width: 100%;
+}
+
+.wish-active-text {
+  font-family: var(--font-handwriting);
+  font-size: clamp(1.4rem, 5.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  padding: 0 8px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.wish-counter-pill {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--rose-accent);
+  background: #FFF0F4;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 20px;
+  border: 1px solid var(--baby-pink);
+}
+
+.pulse-soft {
+  animation: pulseSoft 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseSoft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* --------------------------------------------------------------------------
+   18. FINAL SURPRISE & ONE LAST HUG
+   -------------------------------------------------------------------------- */
+.final-card {
+  background: linear-gradient(145deg, #FFF4F7 0%, #FAF0FF 50%, #FFF8EE 100%);
+  border-radius: var(--radius-lg);
+  padding: 34px 22px 28px 22px;
+  box-shadow: var(--shadow-card);
+  border: 2px solid var(--baby-pink);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-ambient-hearts span {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.4;
+  animation: floatDrift 5s infinite ease-in-out;
+}
+.final-ambient-hearts span:nth-child(1) { top: 12px; left: 16px; animation-delay: 0.2s; }
+.final-ambient-hearts span:nth-child(2) { top: 18px; right: 18px; animation-delay: 1.2s; }
+.final-ambient-hearts span:nth-child(3) { bottom: 65px; left: 20px; animation-delay: 2.2s; }
+
+.final-greeting-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 5.5vw, 1.95rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.final-message-para {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.final-highlight-banner {
+  background: var(--white);
+  padding: 14px 20px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 24px;
+  border: 1px solid rgba(250, 218, 221, 0.8);
+  width: 100%;
+}
+
+.final-big-shoutout {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 5vw, 1.55rem);
+  font-weight: 800;
+  color: var(--rose-accent);
+}
+
+.hug-btn {
+  font-size: 1.15rem;
+  padding: 16px 28px;
+  min-height: 52px;
+  box-shadow: var(--shadow-pop);
+}
+
+.hug-reveal-box {
+  display: none;
+  background: var(--white);
+  border: 2px dashed var(--rose-accent);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-top: 20px;
+  width: 100%;
+  animation: scalePop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.hug-reveal-box.show {
+  display: block;
+}
+
+.hug-emojis {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.hug-text {
+  font-family: var(--font-handwriting);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--rose-deep);
+  line-height: 1.35;
+}
+
+/* Hug Fullscreen Overlay */
+.hug-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10002;
+  background: rgba(45, 25, 35, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.hug-overlay[hidden] {
+  display: none !important;
+}
+
+.hug-overlay-content {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+  animation: scalePop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.hug-big-icon {
+  font-size: 4rem;
+  margin-bottom: 12px;
+  animation: gentlePulse 2s infinite ease-in-out;
+}
+
+.hug-overlay-title {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.hug-overlay-subtitle {
+  font-family: var(--font-handwriting);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--rose-deep);
+  margin-bottom: 24px;
+  line-height: 1.35;
+}
+
+/* Footer inside final card */
+.final-footer {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.footer-divider {
+  font-size: 1.1rem;
+  color: var(--rose-accent);
+}
+
+.footer-signature {
+  font-family: var(--font-handwriting);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.back-to-top {
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(220, 180, 200, 0.4);
+  min-height: 40px;
+}
+
+.back-to-top:hover, .back-to-top:active {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--rose-accent);
+}
+
+/* --------------------------------------------------------------------------
+   19. ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
